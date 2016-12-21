@@ -24,35 +24,75 @@
 <head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8 ;">
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Demo App</title>
+
+	<script type="text/ecmascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/ecmascript" src="js/i18n/grid.locale-ru.js"></script>
+    <script type="text/ecmascript" src="js/jquery.jqGrid.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/ecmascript" src="js/jQuery.jqGrid.dynamicLink.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>Renault Catalog App</title>
 </head>
 
 <body>
     <div class="app">
-        <img src="" id="myImage" width="80"><br>
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+         <div id="menu-section">
+            <img src="img/logo.png" id="logo" width="200" height="255"></a>
+            <button type="button" id="catalog-button" class="button" onclick="getCatalog()"></button>
+            <button type="button" id="preferences-button" class="button" onclick="getPreferences()" ></button>
+        </div>
+        <div id="catalog-section" style="display:none">
+            <button type="button" id="back-button" class="button" onclick="getShowrooms()" style="display:none"></button>
+            <button type="button" id="menu-button" class="button menu-button" onclick="getMenu()"></button>
+            <button type="button" id="nearest-button" class="button" onclick="getNearest()" ></button>
+            <table id="jqGrid"></table>
+            <table id="jqGridCars" style="display:none"></table>
+            <table id="jqGridNearest" style="display:none"></table>
+        </div>
+        <div id="preferences-section" style="display:none">
+            <div class="container">
+                <button type="button" id="preferences-menu-button" class="button menu-button" onclick="getMenu()"></button>
+                <ul>
+                    <li>
+                        <input type="radio" id="azure-option" value="azure" name="selector" onChange="setTheme()" >
+                        <label for="azure-option">azure THEME</label>
+                        
+                        <div class="check"></div>
+                    </li>
+                    
+                    <li>
+                        <input type="radio" id="khaki-option" value="khaki" name="selector" onChange="setTheme()">
+                        <label for="khaki-option">khaki THEME</label>
+                        
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                    
+                    <li>
+                        <input type="radio" id="tan-option" value="tan" name="selector" onChange="setTheme()">
+                        <label for="tan-option">tan THEME</label>
+                        
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                    <li>
+                        <input type="radio" id="whitesmoke-option" value="whitesmoke" name="selector" onChange="setTheme()">
+                        <label for="whitesmoke-option">whitesmoke THEME</label>
+                        
+                        <div class="check"><div class="inside"></div></div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script>
+	</script>
     <script type="text/javascript">
         app.initialize();
     </script>

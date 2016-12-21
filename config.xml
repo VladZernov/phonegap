@@ -2,7 +2,6 @@
 <widget id="com.myapp.wdyery" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>myApp</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
@@ -10,6 +9,8 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+    <preference name="backgroundColor" value="0x00000000" />
+    <plugin name="Globalization" value="org.apache.cordova.Globalization" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
@@ -115,4 +116,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
 </widget>
